@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <title>Grid-coordinates by samme</title>
+  </head>
+
+  <body>
+    <div id="container">
+      <div class="inner">
+
+        <header>
+          <h1>Grid-coordinates</h1>
+          <h2>Sass and Compass highly-configurable CSS grid framework</h2>
+        </header>
+
+        <section id="downloads" class="clearfix">
+          <a href="https://github.com/samme/grid-coordinates/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
+          <a href="https://github.com/samme/grid-coordinates/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
+          <a href="https://github.com/samme/grid-coordinates" id="view-on-github" class="button"><span>View on GitHub</span></a>
+        </section>
+
+        <hr>
+
+        <section id="main_content">
+          <h1>
+<a name="grid-coordinates" class="anchor" href="#grid-coordinates"><span class="octicon octicon-link"></span></a>Grid Coordinates</h1>
+
+<h2>
+<a name="a-sass-based-css-grid-framework-generator" class="anchor" href="#a-sass-based-css-grid-framework-generator"><span class="octicon octicon-link"></span></a>A Sass based CSS Grid Framework Generator</h2>
+
+<p>Grid Coordinates is a highly configurable CSS Grid Framework written in <a href="http://sass-lang.com/">Sass</a>, inspired by Nathan Smith's <a href="http://960.gs/">960.gs</a> and Tyler Tate's <a href="http://1kbgrid.com/">1kb CSS Grid</a>.</p>
+
+<p>Grid Coordinates takes the "coordinates" (grid columns, grid width and grid gutter width) and generates the styles required for your grid.</p>
+
+<p>Grid Coordinates is designed to be used as a <a href="http://compass-style.org/">Compass</a> <a href="http://compass-style.org/help/tutorials/extensions/">extension</a> and can be installed as a <a href="http://rubygems.org/gems/grid-coordinates">Ruby gem</a> or as a stand alone Compass extension.</p>
+
+<h2>
+<a name="just-the-grid" class="anchor" href="#just-the-grid"><span class="octicon octicon-link"></span></a>Just the grid</h2>
+
+<p>Grid Coordinates does one job - provide a rock solid grid framework. It's able to generate styles for grids of any size - you control the coordinates and it generates the styles.</p>
+
+<p>It fully leverages classes, extends and mixins to set up the styles for your grid. It supports nested grids, prefix and suffix grid features as well as push and pull grid features.</p>
+
+<h2>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p><code>gem install grid-coordinates</code></p>
+
+<p>Then add <code>require 'grid-coordinates'</code> to your Compass config file.</p>
+
+<h2>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>Grid Coordinates defaults to a 960px grid with 12 columns and a 60px gutter (perfect for fans of 960.gs). You can override these defaults in your project if this grid doesn't suit your needs.</p>
+
+<p>Use the <a href="http://grids.heroku.com/">variable grid system</a> to plot the course for your CSS grid. The coordinates generated are based on the 960 Grid System, which is one point of inspiration for Grid Coordinates. Review the included test project for a simple demonstration of how to use Grid Coordinates.</p>
+
+<h3>
+<a name="configure-as-needed-and-import" class="anchor" href="#configure-as-needed-and-import"><span class="octicon octicon-link"></span></a>Configure as needed and import</h3>
+
+<pre><code>// Configure grid coordinates
+$grid-columns: 12;
+$grid-width: 60px;
+$grid-gutter-width: 20px;
+
+@import "grid-coordinates";
+
+@include grid-coordinates;
+</code></pre>
+
+<h3>
+<a name="grid-coordinatess-clearfix" class="anchor" href="#grid-coordinatess-clearfix"><span class="octicon octicon-link"></span></a>Grid Coordinates's clearfix</h3>
+
+<p>The clearfix provided Grid Coordinates has an option to use a "clearfix-prefix". By default, the clearfix that ships with Grid Coordinates has no prefix and is simply compiled to <code>.clearfix</code>. If for some reason you're project already has a clearfix class, you shoulld either update to use the clearfix provided by Grid Coordinates or set the prefix variable to avoid conflicts.</p>
+
+<p>For example:</p>
+
+<pre><code>$clearfix-prefix: "__"
+</code></pre>
+
+<p>This would output:</p>
+
+<pre><code>.__clearfix { ... }
+</code></pre>
+
+<h3>
+<a name="legacy-users" class="anchor" href="#legacy-users"><span class="octicon octicon-link"></span></a>Legacy users</h3>
+
+<p>If you are a legacy user of Grid Coordinates, it's possible that you've used the previously supported clearfix classes, <code>.grid-clearfix</code> and <code>.grid-pie-clearfix</code>. If that is the case, you may want to update any used of either of those classes, or set the variable <code>$support-legacy-grid-clearfix</code> to <code>true</code>. This will include those classes in the compiled CSS and <code>@extend</code> the new clearfix provided with Grid Coordinates.</p>
+
+<h3>
+<a name="using-classes-and-extend" class="anchor" href="#using-classes-and-extend"><span class="octicon octicon-link"></span></a>Using classes and <code>@extend</code>
+</h3>
+
+<p>When you use the mixin <code>@include grid-coordinates;</code> (as shown above) you are able to leverage the CSS class selectors in your HTML markup or use the Sass <code>@extend</code> directive to "extend" the class selectors in your Sass stylesheets.</p>
+
+<p><code>@extend .grid-container</code></p>
+
+<p><code>@extend .nested-grid-container</code></p>
+
+<p><code>@extend .grid-[columns]</code></p>
+
+<p><code>@extend .grid-full</code></p>
+
+<p><code>@extend .grid-prefix-[columns]</code></p>
+
+<p><code>@extend .grid-suffix-[columns]</code></p>
+
+<p><code>@extend .grid-push-[columns]</code></p>
+
+<p><code>@extend .grid-pull-[columns]</code></p>
+
+<h3>
+<a name="using-mixins" class="anchor" href="#using-mixins"><span class="octicon octicon-link"></span></a>Using mixins</h3>
+
+<p>Regardless if go the route of using the mixin <code>@include grid-coordinates;</code> (as shown above) or not, you'll have access to use these mixins in your Sass stylesheets. Keep in mind that when you go the route of using mixins, you could end up replicating a lot of code in your output CSS. Learn more about the <a href="http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#extend">Sass extend concept</a> to see if you should use that method or mixins. Either way, Grid Coordinates got your back.</p>
+
+<p><code>@include grid-container</code></p>
+
+<p><code>@include nested-grid-container</code></p>
+
+<p><code>@include grid([columns])</code></p>
+
+<p><code>@include grid-full</code></p>
+
+<p><code>@include grid-prefix([columns])</code></p>
+
+<p><code>@include grid-suffix([columns])</code></p>
+
+<p><code>@include grid-push([columns])</code></p>
+
+<p><code>@include grid-pull([columns])</code></p>
+
+<h2>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>Copyright (c) 2009-2011 Adam Stacoviak</p>
+
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
+
+<p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
+
+<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+        </section>
+
+        <footer>
+          Grid-coordinates is maintained by <a href="https://github.com/samme">samme</a><br>
+          This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
+        </footer>
+
+        
+      </div>
+    </div>
+  </body>
+</html>
